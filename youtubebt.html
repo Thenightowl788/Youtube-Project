@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>youtub_Studywithme</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  p{
+    font-family: Roboto, Arial;
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }
+  div{
+    font-family: roboto, arial;
+  }
+
+  .video-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 30px ;
+    margin-left: 25px;
+    margin-right: 25px;
+    overflow: clip;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-clip-margin: 90px ;
+  }
+  .thumbnail{
+    position: relative;
+  }
+  .video-time{
+    position: absolute;
+    bottom: 16px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.548);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 4px;
+
+
+  }
+
+  .thumbnail1{
+    width: 100%;
+    border-radius: 12px;
+   min-width: 220px;
+    margin-bottom: 8px;
+  }
+  
+  
+
+  .video-name{
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .video-author,
+  .video-stats{
+    font-size: 12px;
+    font-weight: 400;
+    color: #606060;
+    margin-bottom: 6px;
+    
+  }
+  .video-info{
+    display: inline-block;
+    vertical-align: top;
+
+  }
+  .channel-img{
+    width: 36px;
+    border-radius: 50%;
+    
+  }
+  .channel-picture{
+    display: inline-block;
+    vertical-align: top;
+    width: 32px;
+    position: relative;
+  }
+  .channel-picture .tooltip{
+  
+    position: absolute;
+    bottom: -8px;
+    left: 10px;
+    display: flex;
+
+     column-gap: 10px;
+     justify-content: center;
+     align-items: center;
+     background-color: white;
+     padding: 8px 70px 8px 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.548);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+  .channel-picture:hover .tooltip{
+    opacity: 1;
+  }
+  .tooltip-text1{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 6px;
+
+  }
+  .tooltip-text2{
+    font-size: 12px;
+    font-weight: 400;
+    color: #606060;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .video-info-grid{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+  }
+  body{
+    margin: 0;
+    padding-bottom: 2000px;
+    padding-top: 80px;
+    padding-left: 70px;
+    background-color: #f8f8f8;
+  }
+  .header{
+    display: flex;
+    flex-direction: row;
+    height: 56px;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(129, 129, 129, 0.406);
+    z-index: 100;
+  }
+
+
+.left-section{
+  display: flex;
+  align-items: center;
+
+}
+.left-section1{
+  height: 24px;
+  width: 24px;
+  margin-left: 24px;
+  margin-right: 20px;
+  cursor: pointer;
+
+}
+.left-section2{
+  height: 20px;
+  cursor: pointer;
+  
+}
+
+.middle-section{
+  margin-left: 70px;
+  margin-right: 35px;
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+
+}
+.search-bar{
+  flex: 1;
+  height: 36.4px;
+  font-family: roboto, Arial;
+  font-size: 16px;
+  padding-left: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc ;
+  border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  box-shadow: inset 0px 1px 2px #eeeeee;
+  width: 0;
+}
+
+.search-bar::placeholder{
+  font-family: roboto, Arial;
+  font-size: 16px;
+}
+
+.middle-section-icon2{
+height: 24px;
+width: 24px;
+margin-top: 3.5px;
+}
+.middle-section-icon1{
+  margin-top: 0px;
+  height: 24px;
+width: 24px;
+}
+
+.middle-section1{
+  height: 40px;
+  width: 66px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc ;
+  background-color: #F7F7F7;
+  border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;  margin-left: -1px;
+  margin-right: 10px;
+}
+.middle-section2{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #f8f8f8;
+}
+.middle-section1,
+.middle-section2,
+.right-section1-container,
+.right-section2-container,
+.noti-icon-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.middle-section1 .tooltip,
+.middle-section2 .tooltip,
+.right-section1-container .tooltip,
+.right-section2-container .tooltip,
+.noti-icon-container .tooltip{
+  background-color: rgba(96, 96, 96, 0.842);
+  color: white;
+  font-size: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  position: absolute;
+  bottom: -46px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+  pointer-events: none;
+  
+}
+.middle-section1:hover .tooltip,
+.middle-section2:hover .tooltip,
+.right-section1-container:hover .tooltip,
+.right-section2-container:hover .tooltip,
+.noti-icon-container:hover .tooltip{
+opacity: 1;
+}
+.right-section{
+  width: 182px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 24px;
+  flex-shrink: 0;
+}
+
+.right-section1,
+.right-section2,
+.right-section3 {
+  height: 24px;
+  width: 24px;
+}
+.noti-icon-container{
+  position: relative;
+}
+.noti-count{
+  position: absolute;
+  top: -1px;
+  right: -4px;
+  background-color: rgb(213, 4, 4);
+  color: white;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 50%;
+
+}
+.right-section4{
+  height: 32px;
+width: 32px;
+object-fit: cover;
+border-radius: 16px;
+cursor: pointer;
+}
+.sidebar{
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  width: 72px;
+  background-color: white;
+  padding-top: 5px;
+  z-index: 200;
+  cursor: pointer;
+}
+.sidebar-link{
+  height: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-link:hover{
+  background-color: #f8f8f8;
+}
+
+.sidebar1{
+  height: 24px;
+  width: 24px;
+  margin-bottom: 5px;
+}
+.sidebar2{
+  font-size: 10px;
+}
+
+.button-noti{
+  background-color: red;
+  color: white;
+  height: 30px;
+  width: 30px;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+
+  
+
+  
+
+
+
+</style>
+
+
+</head>
+<body>
+
+<div class="header">
+  <div class="left-section"> 
+    <img class="left-section1" src="../YOUTUBE ASSIGMENT/icon/hamburger-menu.svg" alt=""> <img class="left-section2" src="../YOUTUBE ASSIGMENT/icon/youtube-logo.svg" alt="">
+  </div>
+  <div class="middle-section">   
+    <input class="search-bar" type="text" placeholder="Search"> 
+    <button class="middle-section1"> 
+      <img class="middle-section-icon1"  src="../YOUTUBE ASSIGMENT/icon/search.svg" alt="">
+    <div class="tooltip">Search</div>
+    </button> 
+    <button class="middle-section2">
+       <img class="middle-section-icon2" src="../YOUTUBE ASSIGMENT/icon/voice-search-icon.svg" alt="">
+       <div class="tooltip">Search with your voice</div>
+
+      </button>
+
+  </div>
+  <div  class="right-section"> 
+    <div class="right-section1-container">
+      <img class="right-section1" src="../YOUTUBE ASSIGMENT/icon/upload.svg" alt="">
+      <div class="tooltip">Create</div>
+    </div>
+    <div class="right-section1-container">
+      <img class="right-section2" src="../YOUTUBE ASSIGMENT/icon/youtube-apps.svg" alt="">
+      <div class="tooltip">YouTube apps</div>
+    </div>
+    <div class="noti-icon-container">
+      <img class="right-section3" src="../YOUTUBE ASSIGMENT/icon/notifications.svg" alt=""  >
+      <div class="noti-count">3</div>
+      <div class="tooltip">Notifications</div>
+
+    </div>
+    <img class="right-section4" src="../YOUTUBE ASSIGMENT/icon/profile1.jpg" alt="">
+  </div>
+</div>
+
+
+
+
+<div class="sidebar">
+  <div class="sidebar-link">
+    <img class="sidebar1" src="../YOUTUBE ASSIGMENT/img/img bt/sidebar 1.svg" alt="">
+    <div class="sidebar2">Home</div>
+  </div>
+
+  <div class="sidebar-link">
+    <img class="sidebar1" src="../YOUTUBE ASSIGMENT/img/img bt/sidebar 2.svg" alt="">
+    <div class="sidebar2">Explore</div>
+  </div>
+
+  <div class="sidebar-link">
+    <img class="sidebar1" src="../YOUTUBE ASSIGMENT/img/img bt/sidebar 3.svg" alt="">
+    <div class="sidebar2">Subscriptions</div>
+  </div>
+
+  <div class="sidebar-link">
+    <img class="sidebar1" src="../YOUTUBE ASSIGMENT/img/img bt/sidebar 4.svg" alt="">
+    <div class="sidebar2">Orginals</div>
+  </div>
+
+  <div class="sidebar-link">
+    <img class="sidebar1" src="../YOUTUBE ASSIGMENT/img/img bt/sidebar 5.svg" alt="">
+    <div class="sidebar2">YouTube Music</div>
+  </div>
+
+  <div class="sidebar-link">
+    <img class="sidebar1" src="../YOUTUBE ASSIGMENT/img/img bt/sidebar 6.svg" alt="">
+    <div class="sidebar2">Library</div>
+  </div>
+</div>
+
+
+
+
+
+  <div class="video-grid">
+
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail1.webp" alt="">
+        <div class="video-time">1:06:59</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel1profile.jpg" alt="">
+        <div class="tooltip">
+          <div class="tooltip-img"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel1profile.jpg" alt=""></div>
+          <div class="text">
+            <p class="tooltip-text1" >oliviaalee</p>
+            <p class="tooltip-text2">15M subscribers</p>
+          </div>
+        </div>
+        </div>
+        <div class="video-info">
+          <p class="video-name">you're studying in a haunted library with ghosts ( dark academia playlist )</p>
+          <p class="video-author">oliviaalee</p>
+          <p class="video-stats">13M views &#183; 2 years ago</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail2.webp" alt="">
+        <div class="video-time">7:01:31</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel2_profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">[7 HOUR] Dark Academia & Rainfall Playlist 🌧️</p>
+          <p class="video-author">StudyMD</p>
+          <p class="video-stats">73K views &#183; 1 month ago</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail3.webp" alt="">
+        <div class="video-time">1:55:58</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel3_profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">STUDY WITH ME (with music) | a real time study session</p>
+          <p class="video-author">TheStrive Studies</p>
+          <p class="video-stats">1.7M views &#183; 3 years ago</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail4.webp" alt="">
+        <div class="video-time">3:51:14</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel4_profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">STUDY WITH ME 4hrs🕯️💫 50/10 pomodoro (no music)</p>
+          <p class="video-author">Maria Silva</p>
+          <p class="video-stats">108K views &#183; 1 month ago</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail1.webp" alt="">
+        <div class="video-time">1:06:59</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel1profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">you're studying in a haunted library with ghosts ( dark academia playlist )</p>
+          <p class="video-author">oliviaalee</p>
+          <p class="video-stats">13M views &#183; 2 years ago</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail2.webp" alt="">
+        <div class="video-time">1:06:59</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel2_profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">[7 HOUR] Dark Academia & Rainfall Playlist 🌧️</p>
+          <p class="video-author">StudyMD</p>
+          <p class="video-stats">73K views &#183; 1 month ago</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail3.webp" alt="">
+        <div class="video-time">1:06:59</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel3_profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">STUDY WITH ME (with music) | a real time study session</p>
+          <p class="video-author">TheStrive Studies</p>
+          <p class="video-stats">1.7M views &#183; 3 years ago</p>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <div class="video-preview">
+      <div class="thumbnail">
+        <img class="thumbnail1" src="../YOUTUBE ASSIGMENT/img/img bt/thumbnail4.webp" alt="">
+        <div class="video-time">1:06:59</div>
+
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-picture"><img class="channel-img" src="../YOUTUBE ASSIGMENT/img/img bt/channel4_profile.jpg" alt=""></div>
+        <div class="video-info">
+          <p class="video-name">STUDY WITH ME 4hrs🕯️💫 50/10 pomodoro (no music)</p>
+          <p class="video-author">Maria Silva</p>
+          <p class="video-stats">108K views &#183; 1 month ago</p>
+        </div>
+      </div>
+    </div>
+
+<button class="button-noti" >3</button>
+
+
+
+  </div>
+ 
+  
+</body>
+</html>

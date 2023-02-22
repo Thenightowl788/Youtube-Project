@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Practice</title>
+
+    <style>
+
+      .grid-ex{
+        display: grid;
+        grid-template-columns: 40px 60px 1fr;
+        column-gap: 10px;
+        row-gap: 6px  ;
+      }
+
+    .d1{
+      height: 50px;
+      background-color: lightblue;
+    }
+    .d2{
+      background-color: lightcoral;
+    }
+
+
+    </style>
+  </head>
+  <body style="padding-bottom: 2000px">
+    <div style="display: flex; flex-direction: row; row-gap: 10px; column-gap: 10px;">
+      <div style="background-color: lightblue">div1 text</div>
+      <div style="background-color: lightpink">div2<p>text</p></div>
+      <div style="background-color: lightblue">div1 text</div>
+      <div style="background-color: lightpink">div2<p>text</p></div>
+      <div style="background-color: lightblue">div1 text</div>
+      <div style="background-color: lightpink">div2<p>text</p></div>
+      <div style="background-color: lightblue">div1 text</div>
+      <div style="background-color: lightpink">div2<p>text</p></div>
+      <div style="background-color: lightblue">div1 text</div>
+      <div style="background-color: lightpink">div2<p>text</p></div>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; flex-direction: row">
+      <div style="background-color: lightblue; width: 100px">100px</div>
+      <div style="background-color: lightpink;flex: 1;">flex: 1</div>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; flex-direction: row">
+      <div style="background-color: lightblue;flex: 1;">flex: 1</div>
+      <div style="background-color: lightpink; width: 100px">100px</div>
+      <div style="background-color: lightblue; flex: 2;">flex: 2</div>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; flex-direction: row; height: 70px; border-width: 1px ; border-style: solid; border-color: gray; justify-content: center;">
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+    </div>
+    <div style="margin-top: 50px; display: flex; flex-direction: row; height: 70px; border-width: 1px ; border-style: solid; border-color: gray; justify-content: space-between;">
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; flex-direction: row; height: 70px; border-width: 1px ; border-style: solid; border-color: gray; justify-content: space-evenly; width: 600px;">
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; flex-direction: row; height: 70px; border-width: 1px ; border-style: solid; border-color: gray; justify-content: space-evenly; width: 600px; align-items: center;">
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+    <div style="margin-top: 50px; display: flex; flex-direction: row; height: 70px; border-width: 1px ; border-style: solid; border-color: gray; justify-content: space-evenly; width: 600px; align-items: center;">
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+    <div style="margin-top: 50px; display: flex; flex-direction: row; height: 70px; border-width: 1px ; border-style: solid; border-color: gray; justify-content: space-evenly; width: 600px; align-items: center;">
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+      <div style="background-color: lightblue; width: 100px;">100px</div>
+      <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+
+
+    <div class="grid-ex">
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+      <div class="d1">div1</div>
+      <div class="d2">div2</div>
+      <div class="d1">div3</div>
+    </div>
+
+
+
+   
+  </body>
+</html>
